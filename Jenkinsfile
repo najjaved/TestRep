@@ -33,7 +33,8 @@ pipeline {
             echo 'This will run only if successful'
         }
         failure {
-            echo 'This will run only if failed'
+            echo 'This build failed'
+			mail to: 'najma.javed.temp@lilium.com', subject: 'Pipeline failed', body: "${env.BUILD_URL}"
         }
         unstable {
             echo 'This will run only if the run was marked as unstable'
@@ -42,5 +43,6 @@ pipeline {
             echo 'This will run only if the state of the Pipeline has changed'
             echo 'For example, if the Pipeline was previously failing but is now successful'
         }
+		
     }
 }

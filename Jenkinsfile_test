@@ -1,15 +1,13 @@
 //Jenkinsfile Declarative Pipeline
 pipeline {
     agent any 
+	options {
+            buildDiscarder logRotator(artifactDaysToKeepStr: '3', artifactNumToKeepStr: '5', daysToKeepStr: '3', numToKeepStr: '5')
+    }
     stages {
-        stage('Checkout') { 
-            steps {
-			   echo 'step1: this is an example of a declarative  pipeline' 
-               echo 'step2: add code to checkout from repository' 
-            }
-        }
         stage('Build') { 
             steps {
+			   echo 'step1: this is an example of a pipeline written in a Jenkinsfile' 
                echo 'add code to build model' 
             }
         }
